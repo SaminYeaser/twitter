@@ -19,3 +19,25 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 }
 
 ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<from method="post" action="register.php">
+    <fieldset>
+        <label for="username">UserName: </label>
+        <input type="text" name="username">
+        <label for="password">Password: </label>
+        <input type="password" name="pasword">
+        <input type="submit" value="login">
+    </fieldset>
+</from>
+<a href="register.php">No account? Register here</a>
+</body>
+</html>
