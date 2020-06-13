@@ -35,9 +35,9 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         <input type="text" name="username">
         <label for="password">Password: </label>
         <input type="password" name="pasword">
-        <input type="submit" value="login">
+        <input type="submit" value="Sign Up">
     </fieldset>
 </from>
-<a href="register.php">No account? Register here</a>
+<a href="index.php">Login here</a>
 </body>
 </html>
