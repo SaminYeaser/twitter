@@ -1,21 +1,16 @@
 <?php
-include 'dbconnect.php';
 session_start();
 require_once('dbconnect.php');
 
-if(isset($_SESSION['user'])){
-    header('home.php');
-}
+
+//if(isset($_SESSION['user'])){
+//    header('Location: home.php');
+//}
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];
-    $password = hash('sam123',$_POST['password']);
-    $result = $db->users->findOne(array('username'=>$username, 'passwword'=>$password));
-    if(!$result){
-
-    }else{
-        $_SESSION['user'] = $result->id;
-        header('Location: home.php');
-    }
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $result = $db->users->insertOne(array('username'=>$username, 'password'=>$password));
+    header('Location: index.php');
 }
 
 ?>
@@ -29,15 +24,15 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     <title>Document</title>
 </head>
 <body>
-<from method="post" action="register.php">
+<form method="post" action="register.php">
     <fieldset>
         <label for="username">UserName: </label>
         <input type="text" name="username">
         <label for="password">Password: </label>
-        <input type="password" name="pasword">
-        <input type="submit" value="Sign Up">
+        <input type="password" name="password">
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </fieldset>
-</from>
+</form>
 <a href="index.php">Login here</a>
 </body>
 </html>

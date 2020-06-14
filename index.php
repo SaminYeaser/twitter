@@ -1,22 +1,34 @@
 <?php
-include 'dbconnect.php';
 session_start();
 require_once('dbconnect.php');
 
-if(isset($_SESSION['user'])){
-    header('home.php');
-}
-if(isset($_POST['username']) && isset($_POST['password'])){
-    $username = $_POST['username'];
-    $password = hash('sam123',$_POST['password']);
-    $result = $db->users->findOne(array('username'=>$username, 'passwword'=>$password));
-    if(!$result){
+//    if(isset($_SESSION['user'])){
+//        header('home.php');
+//    }
+    if(isset($_POST['username']) && isset($_POST['password'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $result = $db->users->findOne(array('username' => $username));
+        if($result){
+            if (password_verify($password, $result->password)) {
+                $_SESSION['user'] = $result->_id;
+                header('Location: home.php');
+            } else {
 
-    }else{
-        $_SESSION['user'] = $result->id;
-        header('Location: home.php');
+            }
+
+        }
+
+
     }
-}
+//        if(!$result){
+//
+//        }else{
+//
+
+
+
+
 
 ?>
 
@@ -31,15 +43,15 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     <title>Document</title>
 </head>
 <body>
-    <from method="post" action="index.php">
+    <form method="post" action="index.php">
         <fieldset>
             <label for="username">UserName: </label>
             <input type="text" name="username">
             <label for="password">Password: </label>
-            <input type="password" name="pasword">
-            <input type="submit" value="login">
+            <input type="password" name="password">
+            <button type="submit" name="submit">Submit</button>
         </fieldset>
-    </from>
+    </form>
     <a href="register.php">No account? Register here</a>
 </body>
 </html>

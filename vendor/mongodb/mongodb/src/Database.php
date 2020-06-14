@@ -77,6 +77,10 @@ class Database
 
     /** @var WriteConcern */
     private $writeConcern;
+    /**
+     * @var Collection
+     */
+    private $users;
 
     /**
      * Constructs new Database instance.
