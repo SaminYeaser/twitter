@@ -3,7 +3,7 @@ session_start();
 require_once('dbconnect.php');
 
     if(isset($_SESSION['user'])){
-        header('home.php');
+        header('Location: home.php');
     }
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
