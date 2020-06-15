@@ -5,7 +5,12 @@ require_once 'dbconnect.php';
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
-
+function find_user_list($db){
+    $result = $db->users->find();
+    $users = iterator_to_array($result);
+    return $users;
+}
+$userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
 ?>
 <!doctype html>
 <html lang="en">
