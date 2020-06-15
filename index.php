@@ -46,9 +46,9 @@ require_once('dbconnect.php');
     <form method="post" action="index.php">
         <fieldset>
             <label for="username">UserName: </label>
-            <input type="text" name="username">
+            <input type="text" name="username"><br><br>
             <label for="password">Password: </label>
-            <input type="password" name="password">
+            <input type="password" name="password"><br><br>
             <button type="submit" name="submit">Submit</button>
         </fieldset>
     </form>

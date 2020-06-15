@@ -5,6 +5,7 @@ require_once 'dbconnect.php';
 
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
+    echo "<h2>Login first</h2>";
 }
 $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
 
