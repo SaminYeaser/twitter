@@ -19,5 +19,13 @@ $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
 </head>
 <body>
     <?php include ('header.php')?>
+    <br>
+    <form action="create_tweet.php" method="post">
+        <fieldset>
+            <label for="tweet">What is on your mind?</label><br>
+            <textarea name="body" id="" cols="50" rows="4"></textarea><br>
+            <input type="submit" value="Tweet">
+        </fieldset>
+    </form>
 </body>
 </html>
