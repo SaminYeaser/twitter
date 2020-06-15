@@ -24,7 +24,7 @@ $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
         <fieldset>
             <label for="tweet">What is on your mind?</label><br>
             <textarea name="body" id="" cols="50" rows="4"></textarea><br>
-            <input type="submit" value="Tweet">
+            <input type="submit" value="Tweet" />
         </fieldset>
     </form>
 </body>
