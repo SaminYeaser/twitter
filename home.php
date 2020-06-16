@@ -41,10 +41,10 @@ function get_recent_tweets($db){
     <div class="body">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+
                         <div class="form">
-                            <div class="row">
-                                <div class="col-12">
+
+                                <div class="col-6">
                                     <form action="create_tweet.php" method="post">
                                         <fieldset>
                                             <label for="tweet">What is on your mind?</label><br>
@@ -53,21 +53,25 @@ function get_recent_tweets($db){
                                         </fieldset>
                                     </form>
                                 </div>
-                            </div>
+
                         </div>
 
-                    <div>
-                        <p>Tweet form the people you are following</p>
-                        <?php
-                        $recent_tweets = get_recent_tweets($db);
-                        foreach ($recent_tweets as $r_tweets){
-                            echo '<p><a href="profile.php?id='. $r_tweets['authorID'].'">'.$r_tweets['authorName'].'</a></p>';
-                            echo '<p>'.$r_tweets['body'].'</p>';
-                            echo '<p>'.$r_tweets['created'].'</p>';
-                        }
-                        ?>
+                        <div class="d-flex justify-content-center">
+
+                            <div class="col-6">
+                                <h3>Tweet form the people you are following</h3>
+                                <?php
+                                $recent_tweets = get_recent_tweets($db);
+                                foreach ($recent_tweets as $r_tweets){
+                                    echo '<p><a href="profile.php?id='. $r_tweets['authorID'].'">'.$r_tweets['authorName'].'</a></p>';
+                                    echo '<p>'.$r_tweets['body'].'</p>';
+                                    echo '<p>'.$r_tweets['created'].'</p>';
+                                }
+                                ?>
+                            </div>
+
                     </div>
-                </div>
+
             </div>
         </div>
     </div>
