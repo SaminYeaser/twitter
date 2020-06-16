@@ -9,6 +9,17 @@ if(!isset($_SESSION['user'])){
 }
 $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
 
+function get_recent_tweets($db){
+    $tweets = $db->following->find(array('follower'=>$_SESSION['user']));
+    $tweets = iterator_to_array($tweets);
+    $following_users = array();
+    foreach ($tweets as $user){
+        $following_users[] = $user['user'];
+    }
+    $tweets = $db->tweets->find(array('authorID'=>array('$in'=>$following_users)));
+    $recent_tweets = iterator_to_array($tweets);
+    return $recent_tweets;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,5 +40,17 @@ $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
             <input type="submit" value="Tweet" />
         </fieldset>
     </form>
+
+    <div>
+        <p>Tweet form the people you are following</p>
+        <?php
+        $recent_tweets = get_recent_tweets($db);
+        foreach ($recent_tweets as $r_tweets){
+            echo '<p><a href="profile.php?id='. $r_tweets['authorID'].'">'.$r_tweets['authorName'].'</a></p>';
+            echo '<p>'.$r_tweets['body'].'</p>';
+            echo '<p>'.$r_tweets['created'].'</p>';
+        }
+        ?>
+    </div>
 </body>
 </html>
