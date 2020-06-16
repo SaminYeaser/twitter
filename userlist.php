@@ -28,9 +28,10 @@ $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
     <?php
         $userList = find_user_list($db);
         foreach ($userList as $user){
-            echo '<span>'.$user['username'].'</span>';
-            echo '<a href="profile.php?id='.$user[_id].'">Visit Profile</a>';
-            echo '<a href="follow.php?id='.$user[_id].'">Follow</a>';
+            echo '<span><b><pre>'.$user['username'].'</pre></b></span>';
+            echo '<pre><a href="profile.php?id='.$user['_id'].'   ">Visit Profile</a></pre>';
+            echo '<pre><a href="follow.php?id='.$user['_id'].'   ">Follow</a></pre>';
+            echo '<hr>';
         }
     ?>
 </div>
