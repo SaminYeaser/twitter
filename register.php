@@ -34,7 +34,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
 
 
-<form>
+<form method="post" action="register.php">
     <div class="form-group">
         <label for="exampleInputUsername">Username</label>
         <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
