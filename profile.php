@@ -38,18 +38,22 @@ function get_recent_tweets($db){
 </head>
 <body>
     <?php include 'header.php'?>
-    <div>
-        <?php
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <?php
 
-        $recent_tweets = get_recent_tweets($db);
-        foreach ($recent_tweets as $tweet){
-            echo '<p><a href="profile.php?id=' . $tweet['authorID'] . '">' . $tweet['authorName'] . '</a></p>';
-            echo '<p>' . $tweet['body'] . '</p>';
-            echo '<p>' . $tweet['created'] . '</p>';
-            echo '<hr>';
-        }
+                $recent_tweets = get_recent_tweets($db);
+                foreach ($recent_tweets as $tweet){
+                    echo '<p><a href="profile.php?id=' . $tweet['authorID'] . '">' . $tweet['authorName'] . '</a></p>';
+                    echo '<p>' . $tweet['body'] . '</p>';
+                    echo '<p>' . $tweet['created'] . '</p>';
+                    echo '<hr>';
+                }
 
-        ?>
+                ?>
+            </div>
+        </div>
     </div>
 </body>
 </html>
