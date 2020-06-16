@@ -27,17 +27,21 @@ $userData = $db->users->findOne(array('_id'=>$_SESSION['user']));
 </head>
 <body>
 <?php require_once 'header.php'?>
-<div>
-    <p><b>List of users:</b></p>
-    <?php
-        $userList = find_user_list($db);
-        foreach ($userList as $user){
-            echo '<span><b><pre>'.$user['username'].'</pre></b></span>';
-            echo '<pre><a href="profile.php?id='.$user['_id'].'   ">Visit Profile</a></pre>';
-            echo '<pre><a href="follow.php?id='.$user['_id'].'   ">Follow</a></pre>';
-            echo '<hr>';
-        }
-    ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p><b>List of users:</b></p>
+            <?php
+            $userList = find_user_list($db);
+            foreach ($userList as $user){
+                echo '<span><b><pre>'.$user['username'].'</pre></b></span>';
+                echo '<pre><a href="profile.php?id='.$user['_id'].'   ">Visit Profile</a></pre>';
+                echo '<pre><a href="follow.php?id='.$user['_id'].'   ">Follow</a></pre>';
+                echo '<hr>';
+            }
+            ?>
+        </div>
+    </div>
 </div>
 </body>
 </html>
